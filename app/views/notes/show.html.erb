@@ -1,0 +1,14 @@
+<h1>Note Show</h1>
+
+<!-- quote API -->
+<span class="quote"><%= Meditations.quote %></span>
+<p> - Quote from Roman Emperor Marcus Aurelius</p>
+
+<% @note.each do |note| %>
+
+  <li><%= note.title %></li>
+  <li class="note-box"><%= note.post %></li>
+
+  
+
+<% end %>

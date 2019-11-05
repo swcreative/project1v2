@@ -5,11 +5,31 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <%= link_to "Home", root_path %>
+
+      <nav>
+        <% if @current_user.present? %>
+          hi
+            <%= link_to "New Note", new_note_path %>
+            <%= link_to "Notes", note_path(:id) %>
+            <%= link_to "New Topic", new_topic_path %>
+            <%= link_to "Topics", topics_path %>
+            <%= link_to "Logout #{ @current_user.email }", login_path, :method => 'delete' %>
+        <% else %>
+          <%= link_to "Sign up", new_user_path %>
+        <% end %>
+      </nav>
+
+
+    </header>
     <%= yield %>
   </body>
 </html>
